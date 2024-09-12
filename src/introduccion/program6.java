@@ -45,6 +45,7 @@ public class program6 extends javax.swing.JFrame {
         jbtnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("VALOR");
@@ -148,26 +149,19 @@ public class program6 extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "IDAnimal", "ANIMAL", "PESO", "COLOR", "GRUPO / TIPO", "V / IV", "IDPicture"
+                "ID", "Nombre", "Producto", "Valor"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Byte.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -180,6 +174,8 @@ public class program6 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Documentos\\Escritorio\\introduccion\\Imagenes\\CLIENTES-770x400.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -189,38 +185,44 @@ public class program6 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130)
+                        .addGap(180, 180, 180)
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(68, 68, 68)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
+                                .addComponent(jLabel3)
+                                .addGap(80, 80, 80)
+                                .addComponent(jtxtIDAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(133, 133, 133)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel2))))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxtNOMBRE, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(jtxtIDAnimal)
-                            .addComponent(jtxtANIMAL)
-                            .addComponent(jtxtANIMAL1)))
+                                    .addComponent(jLabel7)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jbtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19)))
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtANIMAL1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
                         .addComponent(jbtnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87)
+                        .addGap(99, 99, 99)
                         .addComponent(jbtnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107)
-                        .addComponent(jbtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(jbtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(260, 260, 260)
+                        .addComponent(jbtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(21, 21, 21)
+                                    .addComponent(jtxtANIMAL, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,67 +231,46 @@ public class program6 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtxtIDAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                    .addComponent(jtxtIDAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtxtNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxtNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxtANIMAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jtxtANIMAL1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(72, 72, 72)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnAgregar1)
                     .addComponent(jbtnEditar)
                     .addComponent(jbtnEliminar)
                     .addComponent(jbtnLimpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbuttonActionPerformed
-        // TODO add your handling code here:
-        program inicio = new program ();
-        inicio.show();
-        dispose();
-    }//GEN-LAST:event_backbuttonActionPerformed
-
-    private void jtxtNOMBREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNOMBREActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtNOMBREActionPerformed
-
-    private void jtxtANIMALActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtANIMALActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtANIMALActionPerformed
-
-    private void jtxtANIMAL1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtANIMAL1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtANIMAL1ActionPerformed
 
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
         //========================================= FUNCION AGREGAR =========================================================================
@@ -299,48 +280,38 @@ public class program6 extends javax.swing.JFrame {
         //=========================================END FUNCION AGREGAR=========================================================================
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 
-    private void jbtnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregar1ActionPerformed
-        //========================================= FUNCION AGREGAR =========================================================================
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
+        int SelectedRows = jTable1.getSelectedRow();
 
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            sqlConn = DriverManager.getConnection(dataConn,username,password);
-            pst = sqlConn.prepareStatement("insert into agregar(IDAnimal,NOMBRE,PESO,COLOR,CARACTERISTICA,VIV,IDPicture)value(?,?,?,?,?,?,?)");
+        jtxtIDAnimal.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
+        jtxtNOMBRE.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
+        jtxtPESO.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
+        jtxtCOLOR.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
+        jtxtCARACTERISTICA.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
+        jtxtVIV.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
 
-            pst.setString(1, jtxtIDAnimal.getText());
-            pst.setString(2, jtxtNOMBRE.getText());
-            pst.setString(3, jtxtPESO.getText());
-            pst.setString(4, jtxtCOLOR.getText());
-            pst.setString(5, jtxtCARACTERISTICA.getText());
-            pst.setString(6, jtxtVIV.getText());
-            pst.setString(7, lbl_photo.getIcon().toString());
-
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Se ha añadido exitosamente");
-            upDateDB();
-
-            jtxtIDAnimal.setText("");
-            jtxtNOMBRE.setText("");
-            jtxtPESO.setText("");
-            jtxtCOLOR.setText("");
-            jtxtCARACTERISTICA.setText("");
-            jtxtVIV.setText("");
+        String imagePath = RecordTable.getValueAt(SelectedRows, 7).toString();
+        if (imagePath != null && !imagePath.isEmpty()) {
+            ImageIcon imageIcon = new ImageIcon(imagePath);
+            lbl_photo.setIcon(imageIcon);
+        } else {
             lbl_photo.setIcon(null);
-
         }
+    }//GEN-LAST:event_jTable1MouseClicked
 
-        catch (ClassNotFoundException ex){
-            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }catch (SQLException ex){
-            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }
+    private void jbtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimpiarActionPerformed
+        //===============================================LIMPIAR ACTION=========================================================================
 
-        //=========================================END FUNCION AGREGAR=========================================================================
-    }//GEN-LAST:event_jbtnAgregar1ActionPerformed
+        jtxtIDAnimal.setText("");
+        jtxtNOMBRE.setText("");
+        jtxtPESO.setText("");
+        jtxtCOLOR.setText("");
+        jtxtCARACTERISTICA.setText("");
+        jtxtVIV.setText("");
 
-    private void jbtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEditarActionPerformed
-     
-    }//GEN-LAST:event_jbtnEditarActionPerformed
+        //===============================================END LIMPIAR ACTION=========================================================================
+    }//GEN-LAST:event_jbtnLimpiarActionPerformed
 
     private void jbtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEliminarActionPerformed
         //========================================= FUNCION ELIMINAR =========================================================================
@@ -382,38 +353,67 @@ public class program6 extends javax.swing.JFrame {
         //============================================END FUNCION ELIMINAR=====================================================================
     }//GEN-LAST:event_jbtnEliminarActionPerformed
 
-    private void jbtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimpiarActionPerformed
-        //===============================================LIMPIAR ACTION=========================================================================
+    private void jbtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEditarActionPerformed
 
-        jtxtIDAnimal.setText("");
-        jtxtNOMBRE.setText("");
-        jtxtPESO.setText("");
-        jtxtCOLOR.setText("");
-        jtxtCARACTERISTICA.setText("");
-        jtxtVIV.setText("");
+    }//GEN-LAST:event_jbtnEditarActionPerformed
 
-        //===============================================END LIMPIAR ACTION=========================================================================
-    }//GEN-LAST:event_jbtnLimpiarActionPerformed
+    private void jbtnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregar1ActionPerformed
+        //========================================= FUNCION AGREGAR =========================================================================
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
-        int SelectedRows = jTable1.getSelectedRow();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            sqlConn = DriverManager.getConnection(dataConn,username,password);
+            pst = sqlConn.prepareStatement("insert into agregar(IDAnimal,NOMBRE,PESO,COLOR,CARACTERISTICA,VIV,IDPicture)value(?,?,?,?,?,?,?)");
 
-        jtxtIDAnimal.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
-        jtxtNOMBRE.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
-        jtxtPESO.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
-        jtxtCOLOR.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
-        jtxtCARACTERISTICA.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-        jtxtVIV.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
+            pst.setString(1, jtxtIDAnimal.getText());
+            pst.setString(2, jtxtNOMBRE.getText());
+            pst.setString(3, jtxtPESO.getText());
+            pst.setString(4, jtxtCOLOR.getText());
+            pst.setString(5, jtxtCARACTERISTICA.getText());
+            pst.setString(6, jtxtVIV.getText());
+            pst.setString(7, lbl_photo.getIcon().toString());
 
-        String imagePath = RecordTable.getValueAt(SelectedRows, 7).toString();
-        if (imagePath != null && !imagePath.isEmpty()) {
-            ImageIcon imageIcon = new ImageIcon(imagePath);
-            lbl_photo.setIcon(imageIcon);
-        } else {
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Se ha añadido exitosamente");
+            upDateDB();
+
+            jtxtIDAnimal.setText("");
+            jtxtNOMBRE.setText("");
+            jtxtPESO.setText("");
+            jtxtCOLOR.setText("");
+            jtxtCARACTERISTICA.setText("");
+            jtxtVIV.setText("");
             lbl_photo.setIcon(null);
+
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+
+        catch (ClassNotFoundException ex){
+            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
+        }catch (SQLException ex){
+            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
+        }
+
+        //=========================================END FUNCION AGREGAR=========================================================================
+    }//GEN-LAST:event_jbtnAgregar1ActionPerformed
+
+    private void jtxtANIMAL1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtANIMAL1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtANIMAL1ActionPerformed
+
+    private void jtxtANIMALActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtANIMALActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtANIMALActionPerformed
+
+    private void jtxtNOMBREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNOMBREActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtNOMBREActionPerformed
+
+    private void backbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbuttonActionPerformed
+        // TODO add your handling code here:
+        program inicio = new program ();
+        inicio.show();
+        dispose();
+    }//GEN-LAST:event_backbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,6 +452,7 @@ public class program6 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backbutton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

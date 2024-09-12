@@ -31,12 +31,14 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
     public class program3 extends javax.swing.JFrame {
 
         private static final String username = "root";
-        private static final String password = "12345";
+        private static final String password = "DiegoDiaz12";
         private static final String dataConn = "jdbc:mysql://localhost:3306/connector";
     
         Connection sqlConn = null;
@@ -47,44 +49,45 @@ import javax.swing.JFileChooser;
     
     public program3() {
         initComponents();
+        cargarDatos();
     }
 
     //==========================================FUNCTION========================================================================
     
-    public void upDateDB(){
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            sqlConn = DriverManager.getConnection(dataConn,username,password);
-            pst = sqlConn.prepareStatement("select * from agregar");
-            
-            rs = pst.executeQuery();
-            ResultSetMetaData stData = rs.getMetaData();
-            
-            q = stData.getColumnCount();
-            
-            DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
-            RecordTable.setRowCount(0);
-            
-            while(rs.next()){
-                Vector columnData = new Vector();
-                
-                for (i = 1;i <= q; i++){
-                    columnData.add(rs.getString("id"));
-                    columnData.add(rs.getString("IDAnimal"));
-                    columnData.add(rs.getString("NOMBRE"));
-                    columnData.add(rs.getString("PESO"));
-                    columnData.add(rs.getString("COLOR"));
-                    columnData.add(rs.getString("CARACTERISTICA"));
-                    columnData.add(rs.getString("VIV"));
-                    columnData.add(rs.getString("IDPicture"));
-                }
-                RecordTable.addRow(columnData);
+  public void upDateDB() {
+    try (Connection sqlConn = DriverManager.getConnection(dataConn, username, password);
+         PreparedStatement pst = sqlConn.prepareStatement("SELECT * FROM producto");
+         ResultSet rs = pst.executeQuery()) {
+
+        ResultSetMetaData stData = rs.getMetaData();
+        q = stData.getColumnCount();
+
+        DefaultTableModel RecordTable = (DefaultTableModel) jTable1.getModel();
+        RecordTable.setRowCount(0);
+
+        while (rs.next()) {
+            Vector<Object> columnData = new Vector<>();
+
+            for (i = 1; i <= q; i++) {
+                columnData.add(rs.getString("id"));
+                columnData.add(rs.getString("IDProducto"));
+                columnData.add(rs.getString("NOMBRE"));
+                columnData.add(rs.getString("PESO"));
+                columnData.add(rs.getString("COLOR"));
+                columnData.add(rs.getString("CARACTERISTICA"));
+                columnData.add(rs.getString("Valor"));
+                columnData.add(rs.getString("IDPicture"));
             }
+            RecordTable.addRow(columnData);
         }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null,ex);
-        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, ex);
+        Logger.getLogger(program3.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
+
+
+
     
     //========================================END FUNCTION========================================================================
     @SuppressWarnings("unchecked")
@@ -100,7 +103,7 @@ import javax.swing.JFileChooser;
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jtxtIDAnimal = new javax.swing.JTextField();
+        jtxtIDProducto = new javax.swing.JTextField();
         jtxtNOMBRE = new javax.swing.JTextField();
         jtxtPESO = new javax.swing.JTextField();
         jtxtCOLOR = new javax.swing.JTextField();
@@ -114,7 +117,7 @@ import javax.swing.JFileChooser;
         jLabel9 = new javax.swing.JLabel();
         jbtnSubir = new javax.swing.JButton();
         lbl_photo = new javax.swing.JLabel();
-        jtxtVIV = new javax.swing.JTextField();
+        jtxtValor = new javax.swing.JTextField();
         jbtnLimpiar = new javax.swing.JButton();
         atrasbutton1 = new javax.swing.JButton();
 
@@ -126,7 +129,7 @@ import javax.swing.JFileChooser;
         jLabel1.setText("AGREGAR PRODUCTO");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("PRODUCTO");
+        jLabel2.setText("NOMBRE");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("ID");
@@ -145,6 +148,12 @@ import javax.swing.JFileChooser;
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("VALOR");
+
+        jtxtIDProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtIDProductoActionPerformed(evt);
+            }
+        });
 
         jtxtNOMBRE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +202,7 @@ import javax.swing.JFileChooser;
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "IDAnimal", "ANIMAL", "PESO", "COLOR", "GRUPO / TIPO", "V / IV", "IDPicture"
+                "ID", "IDProducto", "NOMBRE", "PESO", "COLOR", "GRUPO / TIPO", "Valor", "IDPicture"
             }
         ) {
             Class[] types = new Class [] {
@@ -247,9 +256,9 @@ import javax.swing.JFileChooser;
 
         lbl_photo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jtxtVIV.addActionListener(new java.awt.event.ActionListener() {
+        jtxtValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtVIVActionPerformed(evt);
+                jtxtValorActionPerformed(evt);
             }
         });
 
@@ -302,7 +311,7 @@ import javax.swing.JFileChooser;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtxtVIV, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtxtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,9 +345,9 @@ import javax.swing.JFileChooser;
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel2))
-                                .addGap(42, 42, 42)
+                                .addGap(62, 62, 62)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtxtIDAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtxtIDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxtPESO, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxtNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxtCOLOR, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -365,7 +374,7 @@ import javax.swing.JFileChooser;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jtxtIDAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jtxtIDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(19, 19, 19)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,7 +394,7 @@ import javax.swing.JFileChooser;
                         .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jtxtVIV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtxtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -420,103 +429,177 @@ import javax.swing.JFileChooser;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEditarActionPerformed
-        DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
-        int SelectedRows = jTable1.getSelectedRow();
+    DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
+    int SelectedRows = jTable1.getSelectedRow();
 
-        try{
-            id = Integer.parseInt(RecordTable.getValueAt(SelectedRows,0).toString());
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            sqlConn = DriverManager.getConnection(dataConn,username,password);
-            pst = sqlConn.prepareStatement("UPDATE agregar SET IDAnimal=?, NOMBRE=?, PESO=?, COLOR=?, CARACTERISTICA=?, VIV=?, IDPicture=? WHERE id=?");
-            
-            pst.setString(1, jtxtIDAnimal.getText());
-            pst.setString(2, jtxtNOMBRE.getText());
-            pst.setString(3, jtxtPESO.getText());
-            pst.setString(4, jtxtCOLOR.getText());
-            pst.setString(5, jtxtCARACTERISTICA.getText());
-            pst.setString(6, jtxtVIV.getText());
-            String imagePath = null;
-            pst.setString(7, imagePath);
-            pst.setInt(8, id);
-
-            
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Se ha actualizado correctamente");
-            upDateDB();
-        }
+    try {
+        id = Integer.parseInt(RecordTable.getValueAt(SelectedRows, 0).toString());
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        sqlConn = DriverManager.getConnection(dataConn, username, password);
+        // Cambiar 'agregar' por 'producto'
+        pst = sqlConn.prepareStatement("UPDATE producto SET IDProducto=?, NOMBRE=?, PESO=?, COLOR=?, CARACTERISTICA=?, Valor=?, IDPicture=? WHERE id=?");
         
-        catch (ClassNotFoundException ex){
-            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }catch (SQLException ex){
-            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }finally{
-            try{
-                if(pst != null){
-                    pst.close();    
-                }
-                if(sqlConn != null){
-                    sqlConn.close();
-                }
-            }catch(SQLException ex){              
+        pst.setString(1, jtxtIDProducto.getText());
+        pst.setString(2, jtxtNOMBRE.getText());
+        pst.setString(3, jtxtPESO.getText());
+        pst.setString(4, jtxtCOLOR.getText());
+        pst.setString(5, jtxtCARACTERISTICA.getText());
+        pst.setString(6, jtxtValor.getText());
+        String imagePath = null; // Asegúrate de asignar el valor correcto aquí
+        pst.setString(7, imagePath);
+        pst.setInt(8, id);
+
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Se ha actualizado correctamente");
+        upDateDB();
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } finally {
+        try {
+            if (pst != null) {
+                pst.close();    
             }
-        } 
+            if (sqlConn != null) {
+                sqlConn.close();
+            }
+        } catch (SQLException ex) {              
+            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    } 
     }//GEN-LAST:event_jbtnEditarActionPerformed
 
+    private void cargarDatos() {
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        sqlConn = DriverManager.getConnection(dataConn, username, password);
+        String sql = "SELECT * FROM producto"; 
+        pst = sqlConn.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+        while (rs.next()) {
+            Object[] row = {
+                rs.getInt("ID"), 
+                rs.getString("IDProducto"),
+                rs.getString("NOMBRE"),
+                rs.getString("PESO"),
+                rs.getString("COLOR"),
+                rs.getString("CARACTERISTICA"),
+                rs.getString("Valor"),
+                rs.getString("IDPicture")
+            };
+            model.addRow(row);
+        }
+    } catch (ClassNotFoundException | SQLException ex) {
+        java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } finally {
+        try {
+            if (pst != null) {
+                pst.close();
+            }
+            if (sqlConn != null) {
+                sqlConn.close();
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+}
+
+    
     private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
 //========================================= FUNCION AGREGAR =========================================================================
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
             sqlConn = DriverManager.getConnection(dataConn,username,password);
-            pst = sqlConn.prepareStatement("insert into agregar(IDAnimal,NOMBRE,PESO,COLOR,CARACTERISTICA,VIV,IDPicture)value(?,?,?,?,?,?,?)");  
-            
-            pst.setString(1, jtxtIDAnimal.getText());
+            pst = sqlConn.prepareStatement("insert into producto (IDProducto,NOMBRE,PESO,COLOR,CARACTERISTICA,Valor,IDPicture)value(?,?,?,?,?,?,?)");  
+            //producto
+            pst.setString(1, jtxtIDProducto.getText());
             pst.setString(2, jtxtNOMBRE.getText());
             pst.setString(3, jtxtPESO.getText());
             pst.setString(4, jtxtCOLOR.getText());
             pst.setString(5, jtxtCARACTERISTICA.getText());
-            pst.setString(6, jtxtVIV.getText());
+            pst.setString(6, jtxtValor.getText());
             pst.setString(7, lbl_photo.getIcon().toString());
             
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Se ha añadido exitosamente");
             upDateDB();
             
-            jtxtIDAnimal.setText("");
+            jtxtIDProducto.setText("");
             jtxtNOMBRE.setText("");
             jtxtPESO.setText("");        
             jtxtCOLOR.setText("");        
             jtxtCARACTERISTICA.setText("");        
-            jtxtVIV.setText("");        
+            jtxtValor.setText("");        
             lbl_photo.setIcon(null);        
                     
         }
         
-        catch (ClassNotFoundException ex){
-            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        }catch (SQLException ex){
-            java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        } 
+       catch (SQLException ex) {
+        java.util.logging.Logger.getLogger(Java_MysqlConn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+            //=========================================END FUNCION AGREGAR=========================================================================
+ 
         
  //=========================================END FUNCION AGREGAR=========================================================================
     }//GEN-LAST:event_jbtnAgregarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
-        int SelectedRows = jTable1.getSelectedRow();
-        
-        jtxtIDAnimal.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
-        jtxtNOMBRE.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
-        jtxtPESO.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
-        jtxtCOLOR.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
-        jtxtCARACTERISTICA.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-        jtxtVIV.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
-        
-        String imagePath = RecordTable.getValueAt(SelectedRows, 7).toString();
-        if (imagePath != null && !imagePath.isEmpty()) {
-        ImageIcon imageIcon = new ImageIcon(imagePath);
+    DefaultTableModel RecordTable = (DefaultTableModel) jTable1.getModel();
+    int SelectedRows = jTable1.getSelectedRow();
+
+    Object idProducto = RecordTable.getValueAt(SelectedRows, 1);
+    if (idProducto != null) {
+        jtxtIDProducto.setText(idProducto.toString());
+    } else {
+        jtxtIDProducto.setText("");
+    }
+
+    Object nombre = RecordTable.getValueAt(SelectedRows, 2);
+    if (nombre != null) {
+        jtxtNOMBRE.setText(nombre.toString());
+    } else {
+        jtxtNOMBRE.setText("");
+    }
+
+    Object peso = RecordTable.getValueAt(SelectedRows, 3);
+    if (peso != null) {
+        jtxtPESO.setText(peso.toString());
+    } else {
+        jtxtPESO.setText("");
+    }
+
+    Object color = RecordTable.getValueAt(SelectedRows, 4);
+    if (color != null) {
+        jtxtCOLOR.setText(color.toString());
+    } else {
+        jtxtCOLOR.setText("");
+    }
+
+    Object caracteristica = RecordTable.getValueAt(SelectedRows, 5);
+    if (caracteristica != null) {
+        jtxtCARACTERISTICA.setText(caracteristica.toString());
+    } else {
+        jtxtCARACTERISTICA.setText("");
+    }
+
+    Object valor = RecordTable.getValueAt(SelectedRows, 6);
+    if (valor != null) {
+        jtxtValor.setText(valor.toString());
+    } else {
+        jtxtValor.setText("");
+    }
+
+    Object imagePath = RecordTable.getValueAt(SelectedRows, 7);
+    if (imagePath != null && !imagePath.toString().isEmpty()) {
+        ImageIcon imageIcon = new ImageIcon(imagePath.toString());
         lbl_photo.setIcon(imageIcon);
-        } else {
+    } else {
         lbl_photo.setIcon(null);
     }
     }//GEN-LAST:event_jTable1MouseClicked
@@ -534,20 +617,20 @@ import javax.swing.JFileChooser;
               
           Class.forName("com.mysql.jdbc.Driver");
               sqlConn = DriverManager.getConnection(dataConn,username,password);
-                pst = sqlConn.prepareStatement("delete from agregar where id =?");
+                pst = sqlConn.prepareStatement("delete from producto where id =?");
                 
                 pst.setInt(1, id);
                 pst.executeUpdate();
               JOptionPane.showMessageDialog(this,"Información actualizada");
               upDateDB();
               
-            jtxtIDAnimal.setText("");
-            jtxtIDAnimal.requestFocus();
+            jtxtIDProducto.setText("");
+            jtxtIDProducto.requestFocus();
             jtxtNOMBRE.setText("");
             jtxtPESO.setText("");
             jtxtCOLOR.setText("");
             jtxtCARACTERISTICA.setText("");
-            jtxtVIV.setText("");
+            jtxtValor.setText("");
           
           }
         }
@@ -583,9 +666,9 @@ import javax.swing.JFileChooser;
 //=============================================END FUNCION IMG===================================================================
     }//GEN-LAST:event_jbtnSubirActionPerformed
 
-    private void jtxtVIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtVIVActionPerformed
+    private void jtxtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtVIVActionPerformed
+    }//GEN-LAST:event_jtxtValorActionPerformed
 
     private void jtxtNOMBREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNOMBREActionPerformed
         // TODO add your handling code here:
@@ -594,13 +677,14 @@ import javax.swing.JFileChooser;
     private void jbtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimpiarActionPerformed
 //===============================================LIMPIAR ACTION=========================================================================
 
-    jtxtIDAnimal.setText("");
+    jtxtIDProducto.setText("");
     jtxtNOMBRE.setText("");
     jtxtPESO.setText("");
     jtxtCOLOR.setText("");
     jtxtCARACTERISTICA.setText("");
-    jtxtVIV.setText("");
+    jtxtValor.setText("");
 
+    
 //===============================================END LIMPIAR ACTION=========================================================================
     }//GEN-LAST:event_jbtnLimpiarActionPerformed
 
@@ -610,6 +694,10 @@ import javax.swing.JFileChooser;
         menu.show();
         dispose();
     }//GEN-LAST:event_atrasbutton1ActionPerformed
+
+    private void jtxtIDProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIDProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtIDProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -639,10 +727,8 @@ import javax.swing.JFileChooser;
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new program3().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new program3().setVisible(true);
         });
     }
 
@@ -668,10 +754,10 @@ import javax.swing.JFileChooser;
     private javax.swing.JButton jbtnSubir;
     private javax.swing.JTextField jtxtCARACTERISTICA;
     private javax.swing.JTextField jtxtCOLOR;
-    private javax.swing.JTextField jtxtIDAnimal;
+    private javax.swing.JTextField jtxtIDProducto;
     private javax.swing.JTextField jtxtNOMBRE;
     private javax.swing.JTextField jtxtPESO;
-    private javax.swing.JTextField jtxtVIV;
+    private javax.swing.JTextField jtxtValor;
     private javax.swing.JLabel lbl_photo;
     // End of variables declaration//GEN-END:variables
 }

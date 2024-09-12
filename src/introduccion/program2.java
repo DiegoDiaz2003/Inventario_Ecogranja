@@ -97,7 +97,7 @@ public class program2 extends javax.swing.JFrame {
 
         buscar_animal.setBackground(new java.awt.Color(153, 255, 255));
         buscar_animal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        buscar_animal.setText("ALEATORIO");
+        buscar_animal.setText("AGG PROVEEDOR");
         buscar_animal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buscar_animal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,10 +158,11 @@ public class program2 extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(jLabel9))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addComponent(agganimal, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(173, 173, 173)
-                        .addComponent(buscar_animal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111)
+                        .addGap(140, 140, 140)
+                        .addComponent(buscar_animal)
+                        .addGap(97, 97, 97)
                         .addComponent(buscar_animal1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
