@@ -97,18 +97,14 @@
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jbtnAleatorio" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                                  <Component id="jbtnAgregar" min="-2" pref="84" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="jbtnLimpiar" min="-2" pref="84" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="jbtnAgregar" min="-2" pref="84" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                          <Component id="jbtnEditar" min="-2" pref="84" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                           <Component id="jbtnEliminar" min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="jbtnLimpiar" min="-2" pref="84" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="43" max="32767" attributes="0"/>
@@ -125,22 +121,22 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jtxtIDAnimal" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtxtPESO" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtxtCOLOR" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtxtCARACTERISTICA" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtxtANIMAL" alignment="1" pref="136" max="32767" attributes="0"/>
-                      <Component id="jtxtCARACTERISTICA1" max="32767" attributes="0"/>
+                      <Component id="jtxtID" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtxtValor" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtxtEmpresa" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtxtNit" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtxtNombre" alignment="1" pref="136" max="32767" attributes="0"/>
+                      <Component id="jtxtProducto" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="lbl_photo" min="-2" pref="340" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <Component id="jbtnSubir" min="-2" pref="64" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lbl_photo" min="-2" pref="340" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -151,38 +147,38 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="atrasbutton" min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="atrasbutton" min="-2" pref="42" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtxtANIMAL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jtxtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtxtPESO" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jtxtValor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jtxtCOLOR" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jtxtEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jtxtNit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jbtnSubir" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lbl_photo" min="-2" pref="214" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtxtCARACTERISTICA" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jbtnSubir" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -191,21 +187,21 @@
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtxtIDAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtxtID" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtCARACTERISTICA1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtxtProducto" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbtnAleatorio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbtnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbtnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbtnAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbtnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="209" max="-2" attributes="0"/>
@@ -272,23 +268,23 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtIDAnimal">
+        <Component class="javax.swing.JTextField" name="jtxtID">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtIDAnimalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtIDActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtANIMAL">
+        <Component class="javax.swing.JTextField" name="jtxtNombre">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtANIMALActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtNombreActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtPESO">
+        <Component class="javax.swing.JTextField" name="jtxtValor">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtCOLOR">
+        <Component class="javax.swing.JTextField" name="jtxtEmpresa">
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtCARACTERISTICA">
+        <Component class="javax.swing.JTextField" name="jtxtNit">
         </Component>
-        <Component class="javax.swing.JButton" name="jbtnAleatorio">
+        <Component class="javax.swing.JButton" name="jbtnEditar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="ff" red="ff" type="rgb"/>
@@ -296,7 +292,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ALEATORIO"/>
+            <Property name="text" type="java.lang.String" value="EDITAR"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -304,7 +300,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnAleatorioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnEditarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="atrasbutton">
@@ -373,20 +369,57 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="12" rowCount="5">
+                  <Table columnCount="7" rowCount="5">
                     <Column editable="false" title="ID" type="java.lang.Object"/>
-                    <Column editable="false" title="IDAnimal" type="java.lang.Object"/>
-                    <Column editable="false" title="ANIMAL" type="java.lang.Object"/>
-                    <Column editable="false" title="PESO" type="java.lang.Object"/>
-                    <Column editable="true" title="%" type="java.lang.Object"/>
-                    <Column editable="false" title="COLOR" type="java.lang.Object"/>
-                    <Column editable="false" title="CARACTERISTICAS" type="java.lang.Object"/>
-                    <Column editable="false" title="V / IV" type="java.lang.Object"/>
-                    <Column editable="true" title="%" type="java.lang.Object"/>
-                    <Column editable="false" title="GRUPO / TIPO" type="java.lang.Object"/>
-                    <Column editable="true" title="%" type="java.lang.Object"/>
+                    <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                    <Column editable="false" title="Valor" type="java.lang.Object"/>
+                    <Column editable="false" title="Empresa" type="java.lang.Object"/>
+                    <Column editable="false" title="Nit" type="java.lang.Object"/>
+                    <Column editable="false" title="Producto" type="java.lang.Object"/>
                     <Column editable="false" title="IDPicture" type="java.lang.Byte"/>
                   </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
               <Events>
@@ -422,7 +455,7 @@
             <Property name="text" type="java.lang.String" value="PRODUCTO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtCARACTERISTICA1">
+        <Component class="javax.swing.JTextField" name="jtxtProducto">
         </Component>
         <Component class="javax.swing.JButton" name="jbtnSubir">
           <Properties>
